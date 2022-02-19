@@ -1,0 +1,37 @@
+.container {
+    height: 350px;
+    width: 400px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    margin: -300px auto auto -200px;
+    border: 1px solid #888888;
+    padding: 20px;
+}
+
+.notesList {
+    height: 320px;
+    overflow: auto;
+}
+
+
+.input {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 5px 0;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputError {
+    border-bottom: 2px solid red;
+}
+
+.messageError {
+    color: red;
+}

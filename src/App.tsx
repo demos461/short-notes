@@ -1,9 +1,8 @@
 import React from 'react';
+import { NotesList } from './components';
 
-import './App.css';
-
-function App() {
-  return <div className="App">Hello World!</div>;
-}
-
-export default App;
+export const App = () => {
+  return (
+    <NotesList />
+  );
+};
