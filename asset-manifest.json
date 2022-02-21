@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/short-notes/static/css/main.c7959d47.css",
+    "main.js": "/short-notes/static/js/main.f6065ea9.js",
+    "static/media/delete.svg": "/short-notes/static/media/delete.07d98d4281efb3494ceb78f67bf1b7ad.svg",
+    "index.html": "/short-notes/index.html",
+    "main.c7959d47.css.map": "/short-notes/static/css/main.c7959d47.css.map",
+    "main.f6065ea9.js.map": "/short-notes/static/js/main.f6065ea9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c7959d47.css",
+    "static/js/main.f6065ea9.js"
+  ]
+}
