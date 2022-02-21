@@ -1,0 +1,17 @@
+.input {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 5px 0;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputError {
+    border-bottom: 2px solid red;
+}
+
+.messageError {
+    color: red;
+}

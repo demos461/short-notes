@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NotesList } from './components';
 
-export const App = () => {
+export const App: FC = () => {
   return (
     <NotesList />
   );

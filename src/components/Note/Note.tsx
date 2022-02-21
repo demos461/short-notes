@@ -1,17 +1,14 @@
 import React, { FC } from 'react';
 import s from './style/Note.module.css';
 import { ReactComponent as DeleteIcon } from '../../assets/icons/delete.svg';
-import { useDispatch } from 'react-redux';
 import { NotePropsType } from './types';
-import { deleteNote } from '../../store/actions/notesListActions';
 
 
 export const Note: FC<NotePropsType> = (props) => {
-  const { id, text, date, time, weatherIcon, weatherTemp } = props;
-  const dispatch = useDispatch();
+  const { id, text, date, time, weatherIcon, weatherTemp, deleteNote } = props;
 
   const onDeleteNoteClick = () => {
-    dispatch(deleteNote(id));
+    deleteNote(id);
   };
 
   return <div className={s.note}>

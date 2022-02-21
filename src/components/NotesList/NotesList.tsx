@@ -1,33 +1,26 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import React, { FC, useCallback } from 'react';
 import { Note } from '../Note';
 import s from './style/NotesList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootStateType } from '../../store/store';
+import { RootStateType } from '../../store';
 import { NoteType } from '../../store/reducers/types';
-import { addNoteTC } from '../../store/middlewares/addNoteTC';
+import { addNoteTC } from '../../store/thunks/addNoteTC';
+import { AddNoteInput } from '../AddNoteInput';
+import { deleteNote } from '../../store/actions/notesListActions';
 
-export const NotesList = () => {
+export const NotesList: FC = () => {
   const notes = useSelector<RootStateType, NoteType[]>(state => state.notesList.notesList);
   const dispatch = useDispatch();
 
-  const [inputValue, setInputValue] = useState('');
-  const [inputError, setInputError] = useState(false);
+  const addNoteHandler = useCallback((text: string) => {
+    dispatch(addNoteTC(text));
+  }, [dispatch]);
 
-  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value);
-    if (inputValue.length > 300) {
-      setInputError(true);
-    } else {
-      setInputError(false);
-    }
-  };
+  const deleteNoteHandler = useCallback((id: string) => {
+    dispatch(deleteNote(id));
+  }, [dispatch]);
 
-  const onInputKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.charCode === 13 && !inputError) {
-      dispatch(addNoteTC(inputValue));
-      setInputValue('');
-    }
-  };
+
   return (
     <div className={s.container}>
       <div className={s.notesList}>
@@ -40,23 +33,11 @@ export const NotesList = () => {
             weatherTemp={n.weather.temp}
             date={n.date}
             time={n.time}
+            deleteNote={deleteNoteHandler}
           />
         ))}
       </div>
-      <div className={inputError ? s.messageError : ''}>
-        {
-          inputError
-            ? 'The note text must be less than 300 characters.'
-            : 'Add note...'
-        }
-      </div>
-      <input
-        className={inputError ? `${s.input} ${s.inputError}` : s.input}
-        type='text'
-        value={inputValue}
-        onChange={onInputChange}
-        onKeyPress={onInputKeyPress}
-      />
+      <AddNoteInput addNote={addNoteHandler} />
     </div>
   );
 };

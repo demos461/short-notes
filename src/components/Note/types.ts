@@ -5,4 +5,5 @@ export type NotePropsType = {
   time: string,
   weatherIcon: string,
   weatherTemp: number,
+  deleteNote: (id: string) => void
 }

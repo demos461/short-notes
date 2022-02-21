@@ -8,6 +8,10 @@
     padding: 20px;
 }
 
+.note:last-child {
+    margin-bottom: 0;
+}
+
 .noteText {
     width: 250px;
 }
